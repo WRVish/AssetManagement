@@ -1,0 +1,5 @@
+# Ignore custom directory containing detailed guides and drafts
+DontPushtoGit/
+
+# Standard macOS system files
+.DS_Store
