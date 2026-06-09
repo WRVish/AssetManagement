@@ -1,5 +1,10 @@
 # IT Asset Request & Management System
 
+> [!IMPORTANT]
+> **⭐ Support the Project & Share Your Feedback!**
+> * If you find this solution helpful, please **Star this repository** to show your support!
+> * Have a feature request or suggestion? Head over to the **GitHub Discussions** tab to start a conversation or share your ideas!
+
 A brief overview of the IT Asset Request and Management system.
 
 ---
