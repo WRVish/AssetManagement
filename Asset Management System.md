@@ -11,15 +11,7 @@
 
 A full-featured IT Asset Request and Management system built on Power Apps Canvas App (Tablet 1366×768), SharePoint Online, and Power Automate. Staff submit asset requests, IT admins approve and assign assets, and users attest asset possession quarterly.
 
----
 
-## App Flow Diagram
-
-![IT Asset Management — App Flow Overview](../assets/app-flow-overview.png)
-
-*End-to-end flow: Staff submits request → IT admin approves → Asset assigned → User attests quarterly*
-
----
 
 ## Architecture
 
@@ -114,9 +106,7 @@ A timer fires after 1.5 seconds and routes the user to `scrDashboard` (admin rol
 
 **Controls:** Background rectangle, logo, app name label, tagline label, loading label, powered-by label, Timer (hidden, AutoStart = true).
 
-![WelcomeScreen](../assets/screen-welcome.png)
 
----
 
 ### scrDashboard — Dashboard
 **Role:** Admin only | **Purpose:** Overview of app activity with KPI counts and recent request feed.
@@ -140,9 +130,7 @@ scrDashboard
               └── dash_btnRefresh
 ```
 
-![scrDashboard](../assets/screen-dashboard.png)
 
----
 
 ### scrAdminCat — Asset Catalogue
 **Role:** Admin only | **Purpose:** Browse, add, edit, and retire assets in the catalogue.
@@ -177,9 +165,7 @@ scrAdminCat
                           └── cat_btnCancel
 ```
 
-![scrAdminCat](../assets/screen-admin-catalogue.png)
 
----
 
 ### scrAssignments — Asset Assignments
 **Role:** Admin only | **Purpose:** View all asset assignments with search by employee email or asset name and status filter.
@@ -203,8 +189,6 @@ scrAssignments
                     ├── asgn_lblStatus, asgn_lblAttested
                     └── asgn_rectDivider
 ```
-
-![scrAssignments](../assets/screen-assignments.png)
 
 > 🔵 Gallery uses `If` wrapper on Items formula to prevent blank on page load when dropdown has not registered its default value.
 
@@ -240,7 +224,6 @@ scrApprove
                           └── appr_btnCancel   (Text = "Clear")
 ```
 
-![scrApprove](../assets/screen-approve.png)
 
 > Classic controls required for `appr_txtITNotes` and `appr_dpDelivery` — ModernTextInput and ModernDatePicker do not respond to `Reset()`.
 
@@ -273,7 +256,7 @@ scrAttReview
                     └── attr_rectDivider2
 ```
 
-![scrAttReview](../assets/screen-att-review.png)
+
 
 > Items formula uses `!AttestedThisCycle` not `= false` — blank Yes/No columns in SharePoint do not equal false.
 
@@ -301,9 +284,6 @@ scrReports
                     └── rpt_rectDivider
 ```
 
-![scrReports](../assets/screen-reports.png)
-
----
 
 ### scrHome — My Home
 **Role:** All users | **Purpose:** Personalised landing screen with attestation reminder banner and quick action buttons.
@@ -329,9 +309,7 @@ scrHome
                     └── home_btnNotif  (shows unread count)
 ```
 
-![scrHome](../assets/screen-home.png)
 
----
 
 ### scrNewRequest — New Request
 **Role:** All users | **Purpose:** Browse available assets and submit a new request.
@@ -361,7 +339,6 @@ scrNewRequest
               └── req_btnSubmit
 ```
 
-![scrNewRequest](../assets/screen-new-request.png)
 
 > GroupContainer does not support OnSelect. Card selection uses a Rectangle (`req_rectCardBg`) with individual labels each having `OnSelect = Set(selectedAsset, ThisItem)`.
 
@@ -388,9 +365,7 @@ scrMyRequests
                     └── mreq_rectDivider
 ```
 
-![scrMyRequests](../assets/screen-my-requests.png)
 
----
 
 ### scrMyAssets — My Assets
 **Role:** All users | **Purpose:** View all active assets assigned to the logged-in user.
@@ -413,7 +388,6 @@ scrMyAssets
                     └── ast_rectDivider
 ```
 
-![scrMyAssets](../assets/screen-my-assets.png)
 
 > `AssignedToEmail` in SharePoint must match `User().Email` exactly (full UPN). Test data must use the actual login UPN of the test user.
 
@@ -443,7 +417,6 @@ scrAttest
               └── att_btnSubmitAll  (writes to Attestations + updates AssetAssignments)
 ```
 
-![scrAttest](../assets/screen-attest.png)
 
 > `colAttestQueue` is cleared on OnVisible. Navigate away before Submit All loses all confirmations — this is by design.
 
@@ -475,9 +448,7 @@ scrNotif
                     └── notif_rectDivider
 ```
 
-![scrNotif](../assets/screen-notifications.png)
 
----
 
 ## Key Confirmed Patterns
 
@@ -494,7 +465,7 @@ scrNotif
 | Component variables       | Access app scope = On required on all custom properties                                   |
 | FillPortions              | Required on galleries and containers inside vertical AutoLayout to claim remaining height |
 
----
+
 
 *IT Asset Request & Management App — Summary Reference*
 *Vishnu WR — Microsoft Solution Architect — wrvishnu.com*
